@@ -1,4 +1,4 @@
-## fjl的 flask 工具包
+## fjl的 python 工具包
 
 ### 打包发布
 python3 -m pip install --user --upgrade setuptools wheel
@@ -16,4 +16,4 @@ dist
 
 ## 安装方法
 
-
+python setup.py install
