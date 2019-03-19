@@ -19,7 +19,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Colaplusice/icecola",
     packages=setuptools.find_packages(),
-    package_dir={'crawler_utils': 'crawler_utils'},
+    package_dir={"crawler_utils": "crawler_utils"},
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -27,10 +27,12 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'pymongo>=3.7',
-        'pendulum>=2.0',
-        'peewee>=3.9',
-        'Flask>=1.0',
+        "pymongo>=3.7",
+        "pendulum>=2.0",
+        "peewee>=3.9",
+        "Flask>=1.0",
+        "Faker>=1.0",
+        "pytest>=4.3",
     ],
-    python_requires='>=3.5',
+    python_requires=">=3.5",
 )

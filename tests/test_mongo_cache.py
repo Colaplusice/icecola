@@ -9,6 +9,3 @@ def test_mongo_cache(mongo_cache):
     assert set(mongo_cache.values()) == {value1}
     mongo_cache.destroy()
     assert len(mongo_cache) == 0
-
-
-

@@ -1,4 +1,3 @@
-
 def register_api(app, view, endpoint, url, pk="pk", pk_type="int"):
     """
     register_api(UserAPI, 'user_api', '/users/', pk='user_id')
@@ -13,4 +12,3 @@ def register_api(app, view, endpoint, url, pk="pk", pk_type="int"):
         view_func=view_func,
         methods=["GET", "PUT", "DELETE"],
     )
-

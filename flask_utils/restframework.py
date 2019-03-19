@@ -2,6 +2,7 @@ from flask import Response, abort, jsonify, request
 from flask.views import MethodView
 from playhouse.shortcuts import model_to_dict
 
+
 class ModelViewSet(MethodView):
     model_class = None
 
