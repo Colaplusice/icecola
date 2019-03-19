@@ -1,27 +1,59 @@
-## fjl的 python 工具包
+# utils for Flask Web & Crawler
 
-### 安装 setuptools wheel， 安装twine
+## philosophy: DRY don't repeat yourself
 
-- python3 -m pip install --user --upgrade setuptools wheel
-- python3 -m pip install --user --upgrade twine
+## install
 
-### 打包发布
+pip3 install icecola
 
-- python3 setup.py sdist bdist_wheel
-- 测试服 python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-- pypi: python3 -m twine upload dist/*
+## flask_utils
 
-## 运行后生成
+- ModelViewSet: quickly build CRUD for REST api, like django_restframework
 
-python_utils.egg-info
-build
-dist
+views.py
+```python
+from flask_utils.restframework import ModelViewSet
 
-## 安装方法
+from jasmine_app.models.user import User
+from jasmine_app.models.video import Video
 
-- pip install -i https://test.pypi.org/simple/ icecola
 
-## 使用
+class UserView(ModelViewSet):
+    model_class = User
 
-- import crawler_utils
 
+class Video(ModelViewSet):
+    model_class = Video
+
+```
+
+urls.py
+```python
+from jasmine_app.api.views import UserView, Video
+from flask_utils.views import register_api
+
+from . import api
+
+register_api(api, Video, "video_api", "/video/")
+register_api(api, UserView, "user_api", "/user/")
+
+```
+
+## crawler utils
+
+add cache implement for crawler
+
+```python
+def test_mongo_cache(mongo_cache):
+    key1 = "key"
+    value1 = "value"
+
+    mongo_cache[key1] = value1
+    assert mongo_cache[key1] == value1
+    assert len(mongo_cache) == 1
+    assert set(mongo_cache.keys()) == {key1}
+    assert set(mongo_cache.values()) == {value1}
+    mongo_cache.destroy()
+    assert len(mongo_cache) == 0
+
+```

@@ -27,8 +27,10 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'pymongo>=3.7.2',
-        'pendulum>=2.0.3'
+        'pymongo>=3.7',
+        'pendulum>=2.0',
+        'peewee>=3.9',
+        'Flask>=1.0',
     ],
     python_requires='>=3.5',
 )
