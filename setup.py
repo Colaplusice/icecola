@@ -6,7 +6,7 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-with io.open('crawler_utils/__init__.py', 'rt', encoding='utf8') as f:
+with io.open('__init__.py', 'rt', encoding='utf8') as f:
     version = re.search(r'__version__ = \'(.*?)\'', f.read()).group(1)
 
 setuptools.setup(

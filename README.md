@@ -1,6 +1,6 @@
 # utils for Flask Web & Crawler
 
-## philosophy: DRY don't repeat yourself
+#### philosophy: DRY don't repeat yourself
 
 ## install
 
