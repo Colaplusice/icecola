@@ -1,21 +1,12 @@
 import json
 from urllib.parse import quote_plus
 
-from pymongo import mongo_client
-
-
-# import configs
+from pymongo import MongoClient
 
 
 class MongoCache:
     def __init__(
-        self,
-        db_name,
-        collection_name,
-        username=None,
-        password=None,
-        client=None,
-        host="localhost",
+        self, db_name, collection_name, username=None, password=None, host="127.0.0.1"
     ):
         """
         Cache based on Mongodb to save crawler messages
@@ -31,15 +22,15 @@ class MongoCache:
         :param db_name: database name
         :param collection_name:  collection name
         """
-        if not username or not password:
-            client = mongo_client.MongoClient()
+        if username is None or password is None:
+            client = MongoClient()
         else:
             uri = "mongodb://%s:%s@%s" % (
                 quote_plus(username),
                 quote_plus(password),
                 host,
             )
-            client = mongo_client.MongoClient(uri) if not client else client
+            client = MongoClient(uri)
         self.db = client[db_name]
         self.collection = self.db[collection_name]
 
@@ -137,8 +128,13 @@ class MongoCache:
             return None
         return record["key"]
 
-    def __del__(self):
-        self.destroy(self.collection.name)
+    def __delitem__(self, key):
+        """
+        del cache[key]
+        :param key:
+        :return:
+        """
+        self.collection.delete_one({"_id": key})
 
     def destroy(self, collection_name=None, filter={}, **kwargs):
         if not collection_name:

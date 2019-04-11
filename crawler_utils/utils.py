@@ -36,10 +36,8 @@ def absolute_time(time_str):
     :param time_str: string
     :return: string
     """
-    long_list = {"小时": " ", "": "月", " s": "年"}
     time_str = "1 小时前"
     num = time_str.strip()[0]
-    long = time_str[1:-1]
     if not isinstance(int(num), int):
         return
     now = pendulum.now(tz="Asia/shanghai")
