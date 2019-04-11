@@ -1,5 +1,8 @@
 # utils for Flask Web & Crawler
 
+[![image](https://travis-ci.org/Colaplusice/icecola.svg?branch=master)](https://travis-ci.org/Colaplusice/icecola)
+
+
 #### philosophy: DRY don't repeat yourself
 
 ## install
